@@ -24,7 +24,7 @@ type FileResponse struct {
 	Type     string `json:"type"`
 }
 
-const path = "static/uploadfile/"
+const defaultPath = "static/uploadfile/"
 
 type File struct {
 	api.Api
@@ -50,7 +50,7 @@ func (e File) UploadFile(c *gin.Context) {
 	switch tag {
 	case "1": // 单图
 		var done bool
-		fileResponse, done = e.singleFile(c, fileResponse, urlPrefix)
+		fileResponse, done = e.singleFile(c, fileResponse, urlPrefix, defaultPath)
 		if done {
 			return
 		}
@@ -63,9 +63,18 @@ func (e File) UploadFile(c *gin.Context) {
 	case "3": // base64
 		fileResponse = e.baseImg(c, fileResponse, urlPrefix)
 		e.OK(fileResponse, "上传成功")
+	case "4":
+		// dna 文件
+		var done bool
+		fileResponse, done = e.singleFile(c, fileResponse, urlPrefix, "static/dna-data/")
+		if done {
+			return
+		}
+		e.OK(fileResponse, "上传成功")
+		return
 	default:
 		var done bool
-		fileResponse, done = e.singleFile(c, fileResponse, urlPrefix)
+		fileResponse, done = e.singleFile(c, fileResponse, urlPrefix, defaultPath)
 		if done {
 			return
 		}
@@ -81,11 +90,11 @@ func (e File) baseImg(c *gin.Context, fileResponse FileResponse, urlPerfix strin
 	ddd, _ := base64.StdEncoding.DecodeString(file2list[1])
 	guid := uuid.New().String()
 	fileName := guid + ".jpg"
-	err := utils.IsNotExistMkDir(path)
+	err := utils.IsNotExistMkDir(defaultPath)
 	if err != nil {
 		e.Error(500, errors.New(""), "初始化文件路径失败")
 	}
-	base64File := path + fileName
+	base64File := defaultPath + fileName
 	_ = ioutil.WriteFile(base64File, ddd, 0666)
 	typeStr := strings.Replace(strings.Replace(file2list[0], "data:", "", -1), ";base64", "", -1)
 	fileResponse = FileResponse{
@@ -116,11 +125,11 @@ func (e File) multipleFile(c *gin.Context, urlPerfix string) []FileResponse {
 		guid := uuid.New().String()
 		fileName := guid + utils.GetExt(f.Filename)
 
-		err := utils.IsNotExistMkDir(path)
+		err := utils.IsNotExistMkDir(defaultPath)
 		if err != nil {
 			e.Error(500, errors.New(""), "初始化文件路径失败")
 		}
-		multipartFileName := path + fileName
+		multipartFileName := defaultPath + fileName
 		err1 := c.SaveUploadedFile(f, multipartFileName)
 		fileType, _ := utils.GetType(multipartFileName)
 		if err1 == nil {
@@ -146,7 +155,7 @@ func (e File) multipleFile(c *gin.Context, urlPerfix string) []FileResponse {
 	return multipartFile
 }
 
-func (e File) singleFile(c *gin.Context, fileResponse FileResponse, urlPerfix string) (FileResponse, bool) {
+func (e File) singleFile(c *gin.Context, fileResponse FileResponse, urlPerfix string, path string) (FileResponse, bool) {
 	files, err := c.FormFile("file")
 
 	if err != nil {
@@ -178,8 +187,8 @@ func (e File) singleFile(c *gin.Context, fileResponse FileResponse, urlPerfix st
 	//	e.Error(200, errors.New(""), "上传第三方失败")
 	//	return FileResponse{}, true
 	//}
-	fileResponse.Path = "/static/uploadfile/" + fileName
-	fileResponse.FullPath = "/static/uploadfile/" + fileName
+	fileResponse.Path = path + fileName
+	fileResponse.FullPath = path + fileName
 	return fileResponse, false
 }
 
