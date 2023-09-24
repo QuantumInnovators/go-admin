@@ -249,6 +249,14 @@ INSERT INTO sys_menu VALUES (531, '', '修改接口', 'app-group-fill', '', '/0/
 INSERT INTO sys_menu VALUES (537, 'SysTools', '系统工具', 'system-tools', '/sys-tools', '', 'M', '', '', 0, false, '', 'Layout', 30, '0', '1', 1, 1, '2023-05-21 11:13:32.166', '2023-06-16 21:26:12.446', NULL);
 INSERT INTO sys_menu VALUES (540, 'SysConfigSet', '参数设置', 'system-tools', '/admin/sys-config/set', '', 'C', '', 'admin:sysConfigSet:list', 2, false, '', '/admin/sys-config/set', 0, '0', '1', 1, 1, '2023-05-25 16:06:52.560', '2023-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (542, '', '修改', 'upload', '', '', 'F', '', 'admin:sysConfigSet:update', 540, false, '', '', 0, '0', '1', 1, 1, '2023-06-13 11:45:48.670', '2023-06-17 11:48:40.703', NULL);
+INSERT INTO sys_menu VALUES (543, 'data', '我的数据', 'db', '', '/0/2/543', 'M', '', '', 459, 0, '', 'sequcence/index', 110, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-08-15 00:29:56.413', NULL);
+INSERT INTO sys_menu VALUES (544, 'project', '项目数据', 'table', '/api/v1/sequence', '/0/2/543/544', 'C', '', '', 543, 0, '', '/sequence/sequence/index', 0, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-08-15 00:29:56.414', NULL);
+INSERT INTO sys_menu VALUES (545, '/data/tool', '工具数据', 'dev-tools', '/data/tool', '/0/2/543/545', 'C', '', '', 543, 0, '', '/data/tool', 10, '0', '1', 1, 1, '2023-06-26 22:56:54.963', '2023-08-15 00:29:56.415', NULL);
+INSERT INTO sys_menu VALUES (546, 'report', '我的分析报告', 'pdf', '/report', '/0/2/546', 'M', '', 'job:sysJob:list', 459, 0, '', '/report', 120, '0', '1', 1, 1, '2023-06-26 23:01:11.600', '2023-06-26 23:13:23.729', NULL);
+INSERT INTO sys_menu VALUES (547, '', '项目总览', '', '', '/0/2/546/547', 'C', '', '', 546, 0, '', '', 0, '0', '1', 1, 0, '2023-06-26 23:01:51.579', '2023-06-26 23:13:23.731', NULL);
+INSERT INTO sys_menu VALUES (548, '', '任务总览', '', '', '/0/2/546/548', 'C', '', '', 546, 0, '', '', 10, '0', '1', 1, 0, '2023-06-26 23:02:25.353', '2023-06-26 23:13:23.732', NULL);
+INSERT INTO sys_menu VALUES (549, '', '线下报告', '', '', '/0/2/546/549', 'C', '', '', 546, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:02:43.239', '2023-06-26 23:13:23.732', NULL);
+INSERT INTO sys_menu VALUES (550, '原始数据', '原始数据', 'chart', '', '/0/2/543/550', 'C', '', '', 543, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:03:04.832', '2023-08-15 00:29:56.416', NULL);
 INSERT INTO sys_menu_api_rule VALUES (216, 6);
 INSERT INTO sys_menu_api_rule VALUES (250, 6);
 INSERT INTO sys_menu_api_rule VALUES (58, 21);
