@@ -125,7 +125,7 @@ INSERT INTO sys_config VALUES (1, '皮肤样式', 'sys_index_skinName', 'skin-gr
 INSERT INTO sys_config VALUES (2, '初始密码', 'sys_user_initPassword', '123456', 'Y', '0', '用户管理-账号初始密码:123456', 1, 1, '2023-05-13 19:56:37.913', '2023-05-13 19:56:37.913', NULL);
 INSERT INTO sys_config VALUES (3, '侧栏主题', 'sys_index_sideTheme', 'theme-dark', 'Y', '0', '主框架页-侧边栏主题:深色主题theme-dark，浅色主题theme-light', 1, 1, '2023-05-13 19:56:37.913', '2023-05-13 19:56:37.913', NULL);
 INSERT INTO sys_config VALUES (4, '系统名称', 'sys_app_name', '环境DNA数据系统', 'Y', '1', '', 1, 0, '2023-03-17 08:52:06.067', '2023-05-28 10:08:25.248', NULL);
-INSERT INTO sys_config VALUES (5, '系统logo', 'sys_app_logo', 'https://doc-image.zhangwj.com/img/go-admin.png', 'Y', '1', '', 1, 0, '2023-03-17 08:53:19.462', '2023-03-17 08:53:19.462', NULL);
+INSERT INTO sys_config VALUES (5, '系统logo', 'sys_app_logo', 'https://writesome.oss-cn-chengdu.aliyuncs.com/dna_logo.png', 'Y', '1', '', 1, 0, '2023-03-17 08:53:19.462', '2023-03-17 08:53:19.462', NULL);
 
 INSERT INTO sys_dept VALUES (1, 0, '/0/1/', '北京水生物技术研究所', 0, 'aituo', '13782218188', 'atuo@aituo.com', '2', 1, 1, '2023-05-13 19:56:37.913', '2023-06-05 17:06:44.960', NULL);
 INSERT INTO sys_dept VALUES (7, 1, '/0/1/7/', '研发部', 1, 'aituo', '13782218188', 'atuo@aituo.com', '2', 1, 1, '2023-05-13 19:56:37.913', '2023-06-16 21:35:00.109', NULL);
@@ -182,7 +182,7 @@ INSERT INTO sys_dict_type VALUES (11, '内容状态', 'sys_content_status', '2',
 INSERT INTO sys_job VALUES (1, '接口测试', 'DEFAULT', 1, '0/5 * * * * ', 'http://localhost:8000', '', 1, 1, 1, 0, '2023-05-13 19:56:37.914', '2023-06-14 20:59:55.417', NULL, 1, 1);
 INSERT INTO sys_job VALUES (2, '函数测试', 'DEFAULT', 2, '0/5 * * * * ', 'ExamplesOne', '参数', 1, 1, 1, 0, '2023-05-13 19:56:37.914', '2023-05-31 23:55:37.221', NULL, 1, 1);
 
-INSERT INTO sys_menu VALUES (2, 'Admin', '系统管理', 'api-server', '/admin', '/0/2', 'M', '无', '', 0, true, '', 'Layout', 10, '0', '1', 0, 1, '2023-05-20 21:58:45.679', '2023-06-17 11:48:40.703', NULL);
+INSERT INTO sys_menu VALUES (2, 'Admin', '系统管理', 'api-server', '/admin', '/0/2', 'M', '无', '', 0, true, '', 'Layout', 28, '0', '1', 0, 1, '2023-05-20 21:58:45.679', '2023-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (3, 'SysUserManage', '用户管理', 'user', '/admin/sys-user', '/0/2/3', 'C', '无', 'admin:sysUser:list', 2, false, '', '/admin/sys-user/index', 10, '0', '1', 0, 1, '2023-05-20 22:08:44.526', '2023-06-17 20:31:14.305', NULL);
 INSERT INTO sys_menu VALUES (43, '', '新增管理员', 'app-group-fill', '', '/0/2/3/43', 'F', 'POST', 'admin:sysUser:add', 3, false, '', '', 10, '0', '1', 0, 1, '2023-05-20 22:08:44.526', '2023-06-17 20:31:14.305', NULL);
 INSERT INTO sys_menu VALUES (44, '', '查询管理员', 'app-group-fill', '', '/0/2/3/44', 'F', 'GET', 'admin:sysUser:query', 3, false, '', '', 40, '0', '1', 0, 1, '2023-05-20 22:08:44.526', '2023-06-17 20:31:14.305', NULL);
@@ -236,27 +236,54 @@ INSERT INTO sys_menu VALUES (261, 'Gen', '代码生成', 'code', '/dev-tools/gen
 INSERT INTO sys_menu VALUES (262, 'EditTable', '代码生成修改', 'build', '/dev-tools/editTable', '/0/60/262', 'C', '', '', 60, false, '', '/dev-tools/gen/editTable', 100, '1', '1', 1, 1, '2023-04-11 15:52:48.000', '2023-06-16 21:26:12.446', NULL);
 INSERT INTO sys_menu VALUES (264, 'Build', '表单构建', 'build', '/dev-tools/build', '/0/60/264', 'C', '', '', 60, false, '', '/dev-tools/build/index', 1, '0', '1', 1, 1, '2023-04-11 15:52:48.000', '2023-06-16 21:26:12.446', NULL);
 INSERT INTO sys_menu VALUES (269, 'ServerMonitor', '服务监控', 'druid', '/sys-tools/monitor', '/0/60/269', 'C', '', 'sysTools:serverMonitor:list', 537, false, '', '/sys-tools/monitor', 0, '0', '1', 1, 1, '2023-04-14 00:28:19.000', '2023-06-16 21:26:12.446', NULL);
-INSERT INTO sys_menu VALUES (459, 'Schedule', '定时任务', 'time-range', '/schedule', '/0/459', 'M', '无', '', 0, false, '', 'Layout', 20, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
+INSERT INTO sys_menu VALUES (459, 'Schedule', '定时任务', 'time-range', '/schedule', '/0/459', 'M', '无', '', 0, false, '', 'Layout', 45, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
 INSERT INTO sys_menu VALUES (460, 'ScheduleManage', 'Schedule', 'job', '/schedule/manage', '/0/459/460', 'C', '无', 'job:sysJob:list', 459, false, '', '/schedule/index', 0, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
 INSERT INTO sys_menu VALUES (461, 'sys_job', '分页获取定时任务', 'app-group-fill', '', '/0/459/460/461', 'F', '无', 'job:sysJob:query', 460, false, '', '', 0, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
 INSERT INTO sys_menu VALUES (462, 'sys_job', '创建定时任务', 'app-group-fill', '', '/0/459/460/462', 'F', '无', 'job:sysJob:add', 460, false, '', '', 0, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
 INSERT INTO sys_menu VALUES (463, 'sys_job', '修改定时任务', 'app-group-fill', '', '/0/459/460/463', 'F', '无', 'job:sysJob:edit', 460, false, '', '', 0, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
 INSERT INTO sys_menu VALUES (464, 'sys_job', '删除定时任务', 'app-group-fill', '', '/0/459/460/464', 'F', '无', 'job:sysJob:remove', 460, false, '', '', 0, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
 INSERT INTO sys_menu VALUES (471, 'JobLog', '日志', 'bug', '/schedule/log', '/0/459/471', 'C', '', '', 459, false, '', '/schedule/log', 0, '1', '1', 1, 1, '2023-08-05 21:24:46.000', '2023-06-05 22:15:03.465', NULL);
+INSERT INTO sys_menu VALUES (500, 'Project_Center', '项目中心', 'project-center', '/center', '/0/500', 'M', '无', '', 0, false, '', 'Layout', 15, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-06-05 22:15:03.465', NULL);
 INSERT INTO sys_menu VALUES (528, 'SysApiManage', '接口管理', 'api-doc', '/admin/sys-api', '/0/527/528', 'C', '无', 'admin:sysApi:list', 2, false, '', '/admin/sys-api/index', 0, '0', '0', 0, 1, '2023-05-20 22:08:44.526', '2023-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (529, '', '查询接口', 'app-group-fill', '', '/0/527/528/529', 'F', '无', 'admin:sysApi:query', 528, false, '', '', 40, '0', '0', 0, 1, '2023-05-20 22:08:44.526', '2023-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (531, '', '修改接口', 'app-group-fill', '', '/0/527/528/531', 'F', '无', 'admin:sysApi:edit', 528, false, '', '', 30, '0', '0', 0, 1, '2023-05-20 22:08:44.526', '2023-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (537, 'SysTools', '系统工具', 'system-tools', '/sys-tools', '', 'M', '', '', 0, false, '', 'Layout', 30, '0', '1', 1, 1, '2023-05-21 11:13:32.166', '2023-06-16 21:26:12.446', NULL);
 INSERT INTO sys_menu VALUES (540, 'SysConfigSet', '参数设置', 'system-tools', '/admin/sys-config/set', '', 'C', '', 'admin:sysConfigSet:list', 2, false, '', '/admin/sys-config/set', 0, '0', '1', 1, 1, '2023-05-25 16:06:52.560', '2023-06-17 11:48:40.703', NULL);
 INSERT INTO sys_menu VALUES (542, '', '修改', 'upload', '', '', 'F', '', 'admin:sysConfigSet:update', 540, false, '', '', 0, '0', '1', 1, 1, '2023-06-13 11:45:48.670', '2023-06-17 11:48:40.703', NULL);
-INSERT INTO sys_menu VALUES (543, 'data', '我的数据', 'db', '', '/0/459/543', 'M', '', '', 459, 0, '', '/sequence/sequence/index', 110, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-24 22:25:27.227', NULL);
-INSERT INTO sys_menu VALUES (544, 'project', '项目数据', 'table', '/api/v1/sequence', '/0/459/543/544', 'C', '', '', 543, 0, '', '/sequence/sequence/index', 0, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-09-24 22:26:02.759', NULL);
-INSERT INTO sys_menu VALUES (545, '/data/tool', '工具数据', 'dev-tools', '/data/tool', '/0/459/543/545', 'C', '', '', 543, 0, '', '/data/tool', 10, '0', '1', 1, 1, '2023-06-26 22:56:54.963', '2023-09-24 22:25:27.228', NULL);
-INSERT INTO sys_menu VALUES (546, 'report', '我的分析报告', 'pdf', '/report', '/0/459/546', 'M', '', 'job:sysJob:list', 459, 0, '', '/report', 120, '0', '1', 1, 1, '2023-06-26 23:01:11.600', '2023-09-24 20:35:57.919', NULL);
-INSERT INTO sys_menu VALUES (547, '', '项目总览', '', '', '/0/459/546/547', 'C', '', '', 546, 0, '', '', 0, '0', '1', 1, 0, '2023-06-26 23:01:51.579', '2023-09-24 20:35:57.931', NULL);
-INSERT INTO sys_menu VALUES (548, '', '任务总览', '', '', '/0/459/546/548', 'C', '', '', 546, 0, '', '', 10, '0', '1', 1, 0, '2023-06-26 23:02:25.353', '2023-09-24 20:35:57.931', NULL);
-INSERT INTO sys_menu VALUES (549, '', '线下报告', '', '', '/0/459/546/549', 'C', '', '', 546, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:02:43.239', '2023-09-24 20:35:57.932', NULL);
-INSERT INTO sys_menu VALUES (550, '原始数据', '原始数据', 'chart', '', '/0/459/543/550', 'C', '', '', 543, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:03:04.832', '2023-09-24 22:25:27.229', NULL);
+
+INSERT INTO sys_menu VALUES(543, 'data', '我的数据', 'db', '', '/0/500/543', 'M', '', '', 500, 0, '', '/sequence/sequence/index', 110, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:34:06.814', NULL);
+INSERT INTO sys_menu VALUES(544, 'project', '项目数据', 'table', '/api/v1/sequence', '/0/500/543/544', 'C', '', '', 543, 0, '', '/sequence/sequence/index', 0, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-09-25 23:34:06.818', NULL);
+INSERT INTO sys_menu VALUES(545, '/data/tool', '工具数据', 'dev-tools', '/data/tool', '/0/500/543/545', 'C', '', '', 543, 0, '', '/data/tool', 10, '0', '1', 1, 1, '2023-06-26 22:56:54.963', '2023-09-25 23:34:06.819', NULL);
+INSERT INTO sys_menu VALUES(546, 'report', '我的分析报告', 'pdf', '/report', '/0/500/546', 'M', '', 'job:sysJob:list', 500, 0, '', '/report', 120, '0', '1', 1, 1, '2023-06-26 23:01:11.600', '2023-09-25 23:34:06.815', NULL);
+INSERT INTO sys_menu VALUES(547, '', '项目总览', 'cascader', '', '/0/500/546/547', 'C', '', '', 546, 0, '', '', 0, '0', '1', 1, 1, '2023-06-26 23:01:51.579', '2023-09-25 23:34:06.820', NULL);
+INSERT INTO sys_menu VALUES(548, '', '任务总览', 'skill', '', '/0/500/546/548', 'C', '', '', 546, 0, '', '', 10, '0', '1', 1, 1, '2023-06-26 23:02:25.353', '2023-09-25 23:34:06.820', NULL);
+INSERT INTO sys_menu VALUES(549, '', '线下报告', 'form', '', '/0/500/546/549', 'C', '', '', 546, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:02:43.239', '2023-09-25 23:34:06.821', NULL);
+INSERT INTO sys_menu VALUES(550, '原始数据', '原始数据', 'chart', '', '/0/500/543/550', 'C', '', '', 543, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:03:04.832', '2023-09-25 23:34:06.819', NULL);
+INSERT INTO sys_menu VALUES(600, 'Analysis_Overview', '分析管理', 'statistics', '/analysis/analysis_overview', '/0/600', 'M', '无', '', 0, 0, '', 'Layout', 16, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-09-25 23:37:23.526', NULL);
+INSERT INTO sys_menu VALUES(601, 'Report_View', '结题报告', 'documentation', '', '/0/600/601', 'C', '', '', 600, 0, '', 'report/report_view', 50, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:58:09.504', NULL);
+INSERT INTO sys_menu VALUES(602, 'Data_Annotation', '数据注释', 'info-setting', '', '/0/600/602', 'M', '', '', 600, 0, '', 'report/report_view', 10, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:37:23.527', NULL);
+INSERT INTO sys_menu VALUES(603, 'Otu_Statistic', 'OTU分析', 'textarea', '/api/v1/statistic/otu', '/0/600/602/603', 'C', '', '', 602, 0, '', '/sequence/sequence/index', 11, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-09-25 23:37:23.527', NULL);
+INSERT INTO sys_menu VALUES(604, 'Alpha_Diversity_Index', 'Alpha多样性分析', 'table', '/api/v1/statistic/alpha', '/0/600/602/604', 'C', '', '', 602, 0, '', '/data/tool', 12, '0', '1', 1, 1, '2023-06-26 22:56:54.963', '2023-09-25 23:37:23.527', NULL);
+INSERT INTO sys_menu VALUES(610, 'Composition_Analysis', '组成分析', 'nested', '', '/0/600/610', 'M', '', '', 600, 0, '', 'report/report_view', 20, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:37:23.528', NULL);
+INSERT INTO sys_menu VALUES(611, 'Otu_Venn', '物种Venn图分析', 'table', '/api/v1/statistic/otu_venn', '/0/600/610/611', 'C', '', '', 610, 0, '', '/sequence/sequence/index', 0, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-09-25 23:37:23.528', NULL);
+INSERT INTO sys_menu VALUES(612, 'analysis_overview', '分析管理', 'example', '', '/0/600/612', 'C', '', '', 600, 0, '', '/analysis/analysis_overview', 5, '0', '1', 1, 1, '2023-09-25 23:38:43.508', '2023-09-25 23:48:51.723', NULL);
+
+-- INSERT INTO sys_menu VALUES(543, 'data', '我的数据', 'db', '', '/0/500/543', 'M', '', '', 500, 0, '', '/sequence/sequence/index', 110, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:25:44.095', NULL);
+-- INSERT INTO sys_menu VALUES(544, 'project', '项目数据', 'table', '/api/v1/sequence', '/0/500/543/544', 'C', '', '', 543, 0, '', '/sequence/sequence/index', 0, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-09-25 23:25:44.095', NULL);
+-- INSERT INTO sys_menu VALUES(545, '/data/tool', '工具数据', 'dev-tools', '/data/tool', '/0/500/543/545', 'C', '', '', 543, 0, '', '/data/tool', 10, '0', '1', 1, 1, '2023-06-26 22:56:54.963', '2023-09-25 23:25:44.096', NULL);
+-- INSERT INTO sys_menu VALUES(546, 'report', '我的分析报告', 'pdf', '/report', '/0/500/546', 'M', '', 'job:sysJob:list', 500, 0, '', '/report', 120, '0', '1', 1, 1, '2023-06-26 23:01:11.600', '2023-09-25 23:25:44.096', NULL);
+-- INSERT INTO sys_menu VALUES(547, '', '项目总览', 'cascader', '', '/0/500/546/547', 'C', '', '', 546, 0, '', '', 0, '0', '1', 1, 1, '2023-06-26 23:01:51.579', '2023-09-25 23:25:44.096', NULL);
+-- INSERT INTO sys_menu VALUES(548, '', '任务总览', 'skill', '', '/0/500/546/548', 'C', '', '', 546, 0, '', '', 10, '0', '1', 1, 1, '2023-06-26 23:02:25.353', '2023-09-25 23:25:44.097', NULL);
+-- INSERT INTO sys_menu VALUES(549, '', '线下报告', 'form', '', '/0/500/546/549', 'C', '', '', 546, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:02:43.239', '2023-09-25 23:25:44.097', NULL);
+-- INSERT INTO sys_menu VALUES(550, '原始数据', '原始数据', 'chart', '', '/0/500/543/550', 'C', '', '', 543, 0, '', '', 30, '0', '1', 1, 1, '2023-06-26 23:03:04.832', '2023-09-25 23:25:44.097', NULL);
+-- INSERT INTO sys_menu VALUES(600, 'Analysis_Overview', '分析管理', 'statistics', '/analysis', '/0/600', 'M', '无', '', 0, 0, '', 'Layout', 16, '0', '1', 1, 1, '2023-08-03 09:17:37.000', '2023-09-25 23:26:25.395', NULL);
+-- INSERT INTO sys_menu VALUES(601, 'Report_View', '结题报告', 'documentation', '', '/0/600/601', 'M', '', '', 600, 0, '', 'report/report_view', 0, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:27:06.114', NULL);
+-- INSERT INTO sys_menu VALUES(602, 'Data_Annotation', '数据注释', 'info-setting', '', '/0/600/602', 'M', '', '', 600, 0, '', 'report/report_view', 10, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:28:34.074', NULL);
+-- INSERT INTO sys_menu VALUES(603, 'Otu_Statistic', 'OTU分析', 'textarea', '/api/v1/statistic/otu', '/0/600/602/603', 'C', '', '', 602, 0, '', '/sequence/sequence/index', 11, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-09-25 23:28:34.074', NULL);
+-- INSERT INTO sys_menu VALUES(604, 'Alpha_Diversity_Index', 'Alpha多样性分析', 'table', '/api/v1/statistic/alpha', '/0/600/602/604', 'C', '', '', 602, 0, '', '/data/tool', 12, '0', '1', 1, 1, '2023-06-26 22:56:54.963', '2023-09-25 23:29:09.084', NULL);
+-- INSERT INTO sys_menu VALUES(610, 'Composition_Analysis', '组成分析', 'nested', '', '/0/600/610', 'M', '', '', 600, 0, '', 'report/report_view', 20, '0', '1', 1, 1, '2023-06-26 22:38:18.465', '2023-09-25 23:30:17.595', NULL);
+-- INSERT INTO sys_menu VALUES(611, 'Otu_Venn', '物种Venn图分析', 'table', '/api/v1/statistic/otu_venn', '/0/600/610/611', 'C', '', '', 610, 0, '', '/sequence/sequence/index', 0, '0', '1', 1, 1, '2023-06-26 22:54:57.667', '2023-09-25 23:30:23.075', NULL);
+
 INSERT INTO sys_menu_api_rule VALUES (216, 6);
 INSERT INTO sys_menu_api_rule VALUES (250, 6);
 INSERT INTO sys_menu_api_rule VALUES (58, 21);
