@@ -529,7 +529,7 @@ definitions:
         description: 角色排序
         type: integer
       status:
-        description: 状态
+        description: 状态 1禁用 2正常
         type: string
       sysDept:
         items:

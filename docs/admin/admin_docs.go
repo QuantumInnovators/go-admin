@@ -3268,7 +3268,7 @@ const docTemplateadmin = `{
                     "type": "integer"
                 },
                 "status": {
-                    "description": "状态",
+                    "description": "状态 1禁用 2正常",
                     "type": "string"
                 },
                 "sysDept": {
