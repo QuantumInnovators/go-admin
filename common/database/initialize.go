@@ -53,6 +53,12 @@ func setupSimpleDatabase(host string, c *toolsConfig.Database) {
 	}, opens[c.Driver])
 
 	if err != nil {
+		// todo zyx 如果是 Unknown database  错误，则创建目标 database
+		//if c.Driver == "mysql" && err.Error() == "Unknown database" {
+		//	u, _ := url.Parse(c.Source)
+		//	dbName := u.Path[1:]
+		//	// 创建数据库
+		//}
 		log.Fatal(pkg.Red(c.Driver+" connect error :"), err)
 	} else {
 		log.Info(pkg.Green(c.Driver + " connect success !"))
