@@ -2,7 +2,6 @@ package apis
 
 import (
 	"fmt"
-
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
@@ -251,11 +250,34 @@ func (e Sequence) Search(c *gin.Context) {
 	list := make([]models.Sequence, 0)
 	var count int64
 
-	err = s.GetFromSourceByKey(&req, p, &list, &count)
-	if err != nil {
-		e.Error(500, err, fmt.Sprintf("获取Sequence失败，\r\n失败信息 %s", err.Error()))
-		return
+	var data models.Sequence
+	var dataLocal models.SequenceLocal
+	var searchTables []string
+	var iData []interface{}
+	switch req.Source {
+	case 0:
+		searchTables = append(searchTables, data.TableName())
+		iData = append(iData, data)
+		searchTables = append(searchTables, dataLocal.TableName())
+		iData = append(iData, dataLocal)
+	case 1:
+		searchTables = append(searchTables, data.TableName())
+		iData = append(iData, data)
+	case 2:
+		searchTables = append(searchTables, dataLocal.TableName())
+		iData = append(iData, dataLocal)
 	}
 
+	for idx, tableName := range searchTables {
+		retList := make([]models.Sequence, 0)
+		err = s.GetFromSourceByKey(&req, p, &retList, &count, iData[idx], tableName)
+		if err != nil {
+			e.Error(500, err, fmt.Sprintf("获取Sequence失败，\r\n失败信息 %s", err.Error()))
+			return
+		}
+		if retList != nil {
+			list = append(list, retList...)
+		}
+	}
 	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
 }

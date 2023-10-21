@@ -92,13 +92,28 @@ func (s *SequenceGetByClassReq) GetClassID() interface{} {
 
 type SequenceSearchReq struct {
 	dto.Pagination `search:"-"`
-	Source         int    `json:"source"` // 数据库来源 0-total 1-ncbi 2-local
-	Key            string `json:"key"`    // 查询关键词
+	Source         int    `search:"-"`                                                                               // 数据库来源 0-total 1-ncbi 2-local
+	Key            string `json:"key" form:"key"  search:"type:contains;column:sequence_description;table:sequence"` // 查询关键词
 }
 
 func (s *SequenceSearchReq) GetNeedSearch() interface{} {
-	// 查询key匹配
-	return map[string]interface{}{
-		"description like ?": "%" + s.Key + "%",
+	return *s
+}
+
+func (s *SequenceSearchReq) Transfer2Local() *SequenceLocalSearchReq {
+	return &SequenceLocalSearchReq{
+		Pagination: s.Pagination,
+		Source:     s.Source,
+		Key:        s.Key,
 	}
+}
+
+type SequenceLocalSearchReq struct {
+	dto.Pagination `search:"-"`
+	Source         int    `search:"-"`                                                                                     // 数据库来源 0-total 1-ncbi 2-local
+	Key            string `json:"key" form:"key"  search:"type:contains;column:sequence_description;table:sequence_local"` // 查询关键词
+}
+
+func (s *SequenceLocalSearchReq) GetNeedSearch() interface{} {
+	return *s
 }
