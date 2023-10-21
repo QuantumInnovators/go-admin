@@ -12,12 +12,9 @@ import (
 	"strings"
 )
 
-type ReqParam struct {
-	Path string `json:"path"`
-}
-
-func (req *ReqParam) GetId() interface{} {
-	return 0
+type UploadSequenceFileReq struct {
+	Path     string `json:"path"`
+	Category int    `json:"category_id"`
 }
 
 // UploadFile 上传图片
@@ -32,7 +29,7 @@ func (req *ReqParam) GetId() interface{} {
 // @Router /api/v1/public/uploadFile [post]
 // @Security Bearer
 func (e Sequence) UploadFile(c *gin.Context) {
-	reqParam := ReqParam{}
+	reqParam := UploadSequenceFileReq{}
 	err := c.BindJSON(&reqParam)
 	if err != nil {
 		e.Logger.Error(err)
@@ -68,7 +65,12 @@ func (e Sequence) insertIntoDB(filePath string) error {
 		log.Errorf("failed to open file: %s", err)
 		return err
 	}
-	defer file.Close()
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+
+		}
+	}(file)
 
 	var sequences []dto.SequenceInsertReq
 	var seq dto.SequenceInsertReq

@@ -3,10 +3,13 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"go-admin/common/middleware"
 
 	"go-admin/app/sequence/apis"
 	"go-admin/common/actions"
-	"go-admin/common/middleware"
+	_ "go-admin/docs/sequence"
 )
 
 func init() {
@@ -25,5 +28,10 @@ func registerSequenceRouter(v1 *gin.RouterGroup, authMiddleware *jwt.GinJWTMiddl
 		r.PUT("/:id", actions.PermissionAction(), api.Update)
 		r.DELETE("", api.Delete)
 		r.POST("/uploadFile", actions.PermissionAction(), api.UploadFile)
+		r.POST("/search", actions.PermissionAction(), api.Search)
 	}
+}
+
+func swaggerRouter(r *gin.RouterGroup) {
+	r.GET("/swagger/sequence/*any", ginSwagger.WrapHandler(swaggerfiles.NewHandler(), ginSwagger.InstanceName("sequence")))
 }

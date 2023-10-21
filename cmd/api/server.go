@@ -127,7 +127,7 @@ func run() error {
 		}
 	}()
 	fmt.Println(pkg.Red(string(global.LogoContent)))
-	tip()
+	//tip()
 	fmt.Println(pkg.Green("Server run at:"))
 	fmt.Printf("-  Local:   http://localhost:%d/ \r\n", config.ApplicationConfig.Port)
 	fmt.Printf("-  Network: http://%s:%d/ \r\n", pkg.GetLocaHonst(), config.ApplicationConfig.Port)

@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
-	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 
 	"go-admin/app/sequence/models"
 	"go-admin/app/sequence/service"
@@ -20,6 +19,7 @@ type Category struct {
 
 // GetPage 获取Category列表
 // @Summary 获取Category列表
+// @Header 200 {string} Token "qwerty"
 // @Description 获取Category列表
 // @Tags Category
 // @Param pageSize query int false "页条数"

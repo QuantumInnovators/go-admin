@@ -134,3 +134,34 @@ func (e *Sequence) GetByClass(d *dto.SequenceGetByClassReq, p *actions.DataPermi
 	}
 	return nil
 }
+
+func (e *Sequence) GetFromSourceByKey(d *dto.SequenceSearchReq, p *actions.DataPermission, list *[]models.Sequence, count *int64) error {
+	var err error
+	var data models.Sequence
+	var searchTables []string
+	switch d.Source {
+	case 0:
+		searchTables = append(searchTables, data.TableName())
+		searchTables = append(searchTables, data.LocalTableName())
+	case 1:
+		searchTables = append(searchTables, data.TableName())
+	case 2:
+		searchTables = append(searchTables, data.LocalTableName())
+	}
+
+	for _, tableName := range searchTables {
+		err = e.Orm.Model(&data).
+			Scopes(
+				cDto.MakeCondition(d.GetNeedSearch()),
+				cDto.Paginate(d.GetPageSize(), d.GetPageIndex()),
+				actions.Permission(tableName, p),
+			).
+			Find(list).Limit(-1).Offset(-1).
+			Count(count).Error
+		if err != nil {
+			e.Log.Errorf("SequenceService GetPage error:%s \r\n", err)
+			return err
+		}
+	}
+	return nil
+}

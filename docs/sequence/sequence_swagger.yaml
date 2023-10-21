@@ -1,4 +1,408 @@
 definitions:
+  dto.CategoryDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.CategoryInsertReq:
+    properties:
+      createBy:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.CategoryUpdateReq:
+    properties:
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        description: 自增id
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.ClassDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.ClassInsertReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+      phylumId:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.ClassUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phylumId:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.FamilyDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.FamilyInsertReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+      orderId:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.FamilyUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      orderId:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.GenusDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.GenusInsertReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      familyId:
+        type: string
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.GenusUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      familyId:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.KingdomDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.KingdomInsertReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.KingdomUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.LocationDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.LocationInsertReq:
+    properties:
+      createBy:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.LocationUpdateReq:
+    properties:
+      createBy:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.MetaDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.MetaInsertReq:
+    properties:
+      categoryId:
+        type: string
+      classId:
+        type: string
+      createBy:
+        type: integer
+      familyId:
+        type: string
+      genusId:
+        type: string
+      kingdomId:
+        type: string
+      orderId:
+        type: string
+      phylumId:
+        type: string
+      speciesId:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.MetaUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      classId:
+        type: string
+      createBy:
+        type: integer
+      familyId:
+        type: string
+      genusId:
+        type: string
+      id:
+        description: 自增id
+        type: integer
+      kingdomId:
+        type: string
+      orderId:
+        type: string
+      phylumId:
+        type: string
+      speciesId:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.NotationDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.NotationInsertReq:
+    properties:
+      createBy:
+        type: integer
+      desc:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.NotationUpdateReq:
+    properties:
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      updateBy:
+        type: integer
+    type: object
+  dto.OrderDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.OrderInsertReq:
+    properties:
+      categoryId:
+        type: string
+      classId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.OrderUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      classId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.PhylumDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.PhylumInsertReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      kingdomId:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.PhylumUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      kingdomId:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.PrimerDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.PrimerInsertReq:
+    properties:
+      createBy:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.PrimerUpdateReq:
+    properties:
+      createBy:
+        type: integer
+      desc:
+        type: string
+      id:
+        description: 自增id
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
   dto.SequenceDeleteReq:
     properties:
       ids:
@@ -34,6 +438,45 @@ definitions:
       updateBy:
         type: integer
     type: object
+  dto.SpeciesDeleteReq:
+    properties:
+      ids:
+        items:
+          type: integer
+        type: array
+    type: object
+  dto.SpeciesInsertReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      genusId:
+        type: string
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
+  dto.SpeciesUpdateReq:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      desc:
+        type: string
+      genusId:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+    type: object
   handler.Login:
     properties:
       code:
@@ -50,7 +493,106 @@ definitions:
     - username
     - uuid
     type: object
-  models.Sequence:
+  models.Category:
+    properties:
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Class:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phylumId:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Family:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      orderId:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Genus:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      familyId:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Kingdom:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Location:
     properties:
       createBy:
         type: integer
@@ -58,11 +600,131 @@ definitions:
         type: string
       id:
         type: integer
-      sequence:
+      name:
         type: string
-      sequenceDescription:
+      updateBy:
+        type: integer
+      updatedAt:
         type: string
-      sequenceId:
+    type: object
+  models.Meta:
+    properties:
+      categoryId:
+        type: string
+      classId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      familyId:
+        type: string
+      genusId:
+        type: string
+      id:
+        type: integer
+      kingdomId:
+        type: string
+      orderId:
+        type: string
+      phylumId:
+        type: string
+      speciesId:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Notation:
+    properties:
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Order:
+    properties:
+      categoryId:
+        type: string
+      classId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Phylum:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      kingdomId:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Primer:
+    properties:
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updateBy:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  models.Species:
+    properties:
+      categoryId:
+        type: string
+      createBy:
+        type: integer
+      createdAt:
+        type: string
+      desc:
+        type: string
+      genusId:
+        type: string
+      id:
+        type: integer
+      name:
         type: string
       updateBy:
         type: integer
@@ -93,6 +755,744 @@ definitions:
 info:
   contact: {}
 paths:
+  /api/v1/category:
+    delete:
+      description: 删除Category
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CategoryDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Category
+      tags:
+      - Category
+    get:
+      description: 获取Category列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Category'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Category列表
+      tags:
+      - Category
+    post:
+      consumes:
+      - application/json
+      description: 创建Category
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CategoryInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Category
+      tags:
+      - Category
+  /api/v1/category/{id}:
+    get:
+      description: 获取Category
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Category'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Category
+      tags:
+      - Category
+    put:
+      consumes:
+      - application/json
+      description: 修改Category
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CategoryUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Category
+      tags:
+      - Category
+  /api/v1/class:
+    delete:
+      description: 删除Class
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ClassDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Class
+      tags:
+      - Class
+    get:
+      description: 获取Class列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Class'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Class列表
+      tags:
+      - Class
+    post:
+      consumes:
+      - application/json
+      description: 创建Class
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ClassInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Class
+      tags:
+      - Class
+  /api/v1/class/{id}:
+    get:
+      description: 获取Class
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Class'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Class
+      tags:
+      - Class
+    put:
+      consumes:
+      - application/json
+      description: 修改Class
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.ClassUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Class
+      tags:
+      - Class
+  /api/v1/family:
+    delete:
+      description: 删除Family
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.FamilyDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Family
+      tags:
+      - Family
+    get:
+      description: 获取Family列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Family'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Family列表
+      tags:
+      - Family
+    post:
+      consumes:
+      - application/json
+      description: 创建Family
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.FamilyInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Family
+      tags:
+      - Family
+  /api/v1/family/{id}:
+    get:
+      description: 获取Family
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Family'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Family
+      tags:
+      - Family
+    put:
+      consumes:
+      - application/json
+      description: 修改Family
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.FamilyUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Family
+      tags:
+      - Family
+  /api/v1/genus:
+    delete:
+      description: 删除Genus
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.GenusDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Genus
+      tags:
+      - Genus
+    get:
+      description: 获取Genus列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Genus'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Genus列表
+      tags:
+      - Genus
+    post:
+      consumes:
+      - application/json
+      description: 创建Genus
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.GenusInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Genus
+      tags:
+      - Genus
+  /api/v1/genus/{id}:
+    get:
+      description: 获取Genus
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Genus'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Genus
+      tags:
+      - Genus
+    put:
+      consumes:
+      - application/json
+      description: 修改Genus
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.GenusUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Genus
+      tags:
+      - Genus
+  /api/v1/kingdom:
+    delete:
+      description: 删除Kingdom
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.KingdomDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Kingdom
+      tags:
+      - Kingdom
+    get:
+      description: 获取Kingdom列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Kingdom'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Kingdom列表
+      tags:
+      - Kingdom
+    post:
+      consumes:
+      - application/json
+      description: 创建Kingdom
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.KingdomInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Kingdom
+      tags:
+      - Kingdom
+  /api/v1/kingdom/{id}:
+    get:
+      description: 获取Kingdom
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Kingdom'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Kingdom
+      tags:
+      - Kingdom
+    put:
+      consumes:
+      - application/json
+      description: 修改Kingdom
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.KingdomUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Kingdom
+      tags:
+      - Kingdom
+  /api/v1/location:
+    delete:
+      description: 删除Location
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LocationDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Location
+      tags:
+      - Location
+    get:
+      description: 获取Location列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Location'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Location列表
+      tags:
+      - Location
+    post:
+      consumes:
+      - application/json
+      description: 创建Location
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LocationInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Location
+      tags:
+      - Location
+  /api/v1/location/{id}:
+    get:
+      description: 获取Location
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Location'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Location
+      tags:
+      - Location
+    put:
+      consumes:
+      - application/json
+      description: 修改Location
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LocationUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Location
+      tags:
+      - Location
   /api/v1/login:
     post:
       consumes:
@@ -121,6 +1521,621 @@ paths:
       summary: 登陆
       tags:
       - 登陆
+  /api/v1/meta:
+    delete:
+      description: 删除Meta
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.MetaDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Meta
+      tags:
+      - Meta
+    get:
+      description: 获取Meta列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Meta'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Meta列表
+      tags:
+      - Meta
+    post:
+      consumes:
+      - application/json
+      description: 创建Meta
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.MetaInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Meta
+      tags:
+      - Meta
+  /api/v1/meta/{id}:
+    get:
+      description: 获取Meta
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Meta'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Meta
+      tags:
+      - Meta
+    put:
+      consumes:
+      - application/json
+      description: 修改Meta
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.MetaUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Meta
+      tags:
+      - Meta
+  /api/v1/notation:
+    delete:
+      description: 删除Notation
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.NotationDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Notation
+      tags:
+      - Notation
+    get:
+      description: 获取Notation列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Notation'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Notation列表
+      tags:
+      - Notation
+    post:
+      consumes:
+      - application/json
+      description: 创建Notation
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.NotationInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Notation
+      tags:
+      - Notation
+  /api/v1/notation/{id}:
+    get:
+      description: 获取Notation
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Notation'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Notation
+      tags:
+      - Notation
+    put:
+      consumes:
+      - application/json
+      description: 修改Notation
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.NotationUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Notation
+      tags:
+      - Notation
+  /api/v1/order:
+    delete:
+      description: 删除Order
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.OrderDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Order
+      tags:
+      - Order
+    get:
+      description: 获取Order列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Order'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Order列表
+      tags:
+      - Order
+    post:
+      consumes:
+      - application/json
+      description: 创建Order
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.OrderInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Order
+      tags:
+      - Order
+  /api/v1/order/{id}:
+    get:
+      description: 获取Order
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Order'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Order
+      tags:
+      - Order
+    put:
+      consumes:
+      - application/json
+      description: 修改Order
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.OrderUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Order
+      tags:
+      - Order
+  /api/v1/phylum:
+    delete:
+      description: 删除Phylum
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PhylumDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Phylum
+      tags:
+      - Phylum
+    get:
+      description: 获取Phylum列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Phylum'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Phylum列表
+      tags:
+      - Phylum
+    post:
+      consumes:
+      - application/json
+      description: 创建Phylum
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PhylumInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Phylum
+      tags:
+      - Phylum
+  /api/v1/phylum/{id}:
+    get:
+      description: 获取Phylum
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Phylum'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Phylum
+      tags:
+      - Phylum
+    put:
+      consumes:
+      - application/json
+      description: 修改Phylum
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PhylumUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Phylum
+      tags:
+      - Phylum
+  /api/v1/primer:
+    delete:
+      description: 删除Primer
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PrimerDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Primer
+      tags:
+      - Primer
+    get:
+      description: 获取Primer列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Primer'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Primer列表
+      tags:
+      - Primer
+    post:
+      consumes:
+      - application/json
+      description: 创建Primer
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PrimerInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Primer
+      tags:
+      - Primer
+  /api/v1/primer/{id}:
+    get:
+      description: 获取Primer
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Primer'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Primer
+      tags:
+      - Primer
+    put:
+      consumes:
+      - application/json
+      description: 修改Primer
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PrimerUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Primer
+      tags:
+      - Primer
   /api/v1/public/uploadFile:
     post:
       consumes:
@@ -159,9 +2174,9 @@ paths:
           $ref: '#/definitions/dto.SequenceDeleteReq'
       responses:
         "200":
-          description: '{"code": 200, "message": "删除成功"}'
+          description: '{"code": 200, "data": [...]}'
           schema:
-            $ref: '#/definitions/response.Response'
+            type: string
       security:
       - Bearer: []
       summary: 删除Sequence
@@ -182,19 +2197,7 @@ paths:
         "200":
           description: '{"code": 200, "data": [...]}'
           schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  allOf:
-                  - $ref: '#/definitions/response.Page'
-                  - properties:
-                      list:
-                        items:
-                          $ref: '#/definitions/models.Sequence'
-                        type: array
-                    type: object
-              type: object
+            type: string
       security:
       - Bearer: []
       summary: 获取Sequence列表
@@ -213,9 +2216,9 @@ paths:
           $ref: '#/definitions/dto.SequenceInsertReq'
       responses:
         "200":
-          description: '{"code": 200, "message": "添加成功"}'
+          description: '{"code": 200, "data": [...]}'
           schema:
-            $ref: '#/definitions/response.Response'
+            type: string
       security:
       - Bearer: []
       summary: 创建Sequence
@@ -233,12 +2236,7 @@ paths:
         "200":
           description: '{"code": 200, "data": [...]}'
           schema:
-            allOf:
-            - $ref: '#/definitions/response.Response'
-            - properties:
-                data:
-                  $ref: '#/definitions/models.Sequence'
-              type: object
+            type: string
       security:
       - Bearer: []
       summary: 获取Sequence
@@ -262,9 +2260,9 @@ paths:
           $ref: '#/definitions/dto.SequenceUpdateReq'
       responses:
         "200":
-          description: '{"code": 200, "message": "修改成功"}'
+          description: '{"code": 200, "data": [...]}'
           schema:
-            $ref: '#/definitions/response.Response'
+            type: string
       security:
       - Bearer: []
       summary: 修改Sequence
@@ -280,14 +2278,165 @@ paths:
         type: integer
       responses:
         "200":
-          description: OK
+          description: '{"code": 200, "data": [...]}'
           schema:
-            $ref: '#/definitions/response.Response'
+            type: string
       security:
       - Bearer: []
       summary: 获取Sequence
       tags:
       - Sequence
+  /api/v1/sequence/search:
+    post:
+      description: 查询Sequence信息
+      parameters:
+      - description: 查询条件
+        in: body
+        name: data
+        required: true
+        schema:
+          type: object
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            type: string
+      security:
+      - Bearer: []
+      summary: 查询Sequence信息
+      tags:
+      - Sequence
+  /api/v1/species:
+    delete:
+      description: 删除Species
+      parameters:
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SpeciesDeleteReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "删除成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 删除Species
+      tags:
+      - Species
+    get:
+      description: 获取Species列表
+      parameters:
+      - description: 页条数
+        in: query
+        name: pageSize
+        type: integer
+      - description: 页码
+        in: query
+        name: pageIndex
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  allOf:
+                  - $ref: '#/definitions/response.Page'
+                  - properties:
+                      list:
+                        items:
+                          $ref: '#/definitions/models.Species'
+                        type: array
+                    type: object
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Species列表
+      tags:
+      - Species
+    post:
+      consumes:
+      - application/json
+      description: 创建Species
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SpeciesInsertReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "添加成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 创建Species
+      tags:
+      - Species
+  /api/v1/species/{id}:
+    get:
+      description: 获取Species
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: integer
+      responses:
+        "200":
+          description: '{"code": 200, "data": [...]}'
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Species'
+              type: object
+      security:
+      - Bearer: []
+      summary: 获取Species
+      tags:
+      - Species
+    put:
+      consumes:
+      - application/json
+      description: 修改Species
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SpeciesUpdateReq'
+      responses:
+        "200":
+          description: '{"code": 200, "message": "修改成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - Bearer: []
+      summary: 修改Species
+      tags:
+      - Species
   /logout:
     post:
       consumes:

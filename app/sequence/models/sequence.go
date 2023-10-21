@@ -18,6 +18,10 @@ func (Sequence) TableName() string {
 	return "sequence"
 }
 
+func (Sequence) LocalTableName() string {
+	return "sequence_local"
+}
+
 func (e *Sequence) Generate() models.ActiveRecord {
 	o := *e
 	return &o

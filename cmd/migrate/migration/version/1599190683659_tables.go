@@ -40,6 +40,19 @@ func _1599190683659Tables(db *gorm.DB, version string) error {
 			new(models.SysApi),
 			new(models.TbDemo),
 			new(models.Sequence),
+			new(models.SequenceLocal),
+			new(models.Category),
+			new(models.Class),
+			new(models.Family),
+			new(models.Genus),
+			new(models.Species),
+			new(models.Primer),
+			new(models.Phylum),
+			new(models.Meta),
+			new(models.Notation),
+			new(models.Location),
+			new(models.Kingdom),
+			new(models.Order),
 		)
 		if err != nil {
 			return err

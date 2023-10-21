@@ -24,7 +24,7 @@ type Sequence struct {
 // @Tags Sequence
 // @Param pageSize query int false "页条数"
 // @Param pageIndex query int false "页码"
-// @Success 200 {object} response.Response{data=response.Page{list=[]models.Sequence}} "{"code": 200, "data": [...]}"
+// @Success 200 {string} {object} response.Response "{"code": 200, "data": [...]}"
 // @Router /api/v1/sequence [get]
 // @Security Bearer
 func (e Sequence) GetPage(c *gin.Context) {
@@ -59,7 +59,7 @@ func (e Sequence) GetPage(c *gin.Context) {
 // @Description 获取Sequence
 // @Tags Sequence
 // @Param id path int false "id"
-// @Success 200 {object} response.Response{data=models.Sequence} "{"code": 200, "data": [...]}"
+// @Success 200 {string} {object} response.Response "{"code": 200, "data": [...]}"
 // @Router /api/v1/sequence/{id} [get]
 // @Security Bearer
 func (e Sequence) Get(c *gin.Context) {
@@ -94,7 +94,7 @@ func (e Sequence) Get(c *gin.Context) {
 // @Accept application/json
 // @Product application/json
 // @Param data body dto.SequenceInsertReq true "data"
-// @Success 200 {object} response.Response	"{"code": 200, "message": "添加成功"}"
+// @Success 200 {string} {object} response.Response "{"code": 200, "data": [...]}"
 // @Router /api/v1/sequence [post]
 // @Security Bearer
 func (e Sequence) Insert(c *gin.Context) {
@@ -130,7 +130,7 @@ func (e Sequence) Insert(c *gin.Context) {
 // @Product application/json
 // @Param id path int true "id"
 // @Param data body dto.SequenceUpdateReq true "body"
-// @Success 200 {object} response.Response	"{"code": 200, "message": "修改成功"}"
+// @Success 200 {string} {object} response.Response "{"code": 200, "data": [...]}"
 // @Router /api/v1/sequence/{id} [put]
 // @Security Bearer
 func (e Sequence) Update(c *gin.Context) {
@@ -162,7 +162,7 @@ func (e Sequence) Update(c *gin.Context) {
 // @Description 删除Sequence
 // @Tags Sequence
 // @Param data body dto.SequenceDeleteReq true "body"
-// @Success 200 {object} response.Response	"{"code": 200, "message": "删除成功"}"
+// @Success 200 {string} {object} response.Response "{"code": 200, "data": [...]}"
 // @Router /api/v1/sequence [delete]
 // @Security Bearer
 func (e Sequence) Delete(c *gin.Context) {
@@ -195,7 +195,7 @@ func (e Sequence) Delete(c *gin.Context) {
 // @Description 获取Sequence
 // @Tags Sequence
 // @Param class_id path int false "class_id"
-// @Success 200 {object} response.Response
+// @Success 200 {string} {object} response.Response "{"code": 200, "data": [...]}"
 // @Router /api/v1/sequence/class/{class_id} [get]
 // @Security Bearer
 func (e Sequence) GetByClassID(c *gin.Context) {
@@ -221,4 +221,41 @@ func (e Sequence) GetByClassID(c *gin.Context) {
 	}
 
 	e.OK(object, "查询成功")
+}
+
+// Search
+// @Summary 查询Sequence信息
+// @Description 查询Sequence信息
+// @Tags Sequence
+// @Param data body object true "查询条件"
+// @Param pageSize query int false "页条数"
+// @Param pageIndex query int false "页码"
+// @Success 200 {string} {object} response.Response "{"code": 200, "data": [...]}"
+// @Router /api/v1/sequence/search [post]
+// @Security Bearer
+func (e Sequence) Search(c *gin.Context) {
+	req := dto.SequenceSearchReq{}
+	s := service.Sequence{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
+
+	p := actions.GetPermissionFromContext(c)
+	list := make([]models.Sequence, 0)
+	var count int64
+
+	err = s.GetFromSourceByKey(&req, p, &list, &count)
+	if err != nil {
+		e.Error(500, err, fmt.Sprintf("获取Sequence失败，\r\n失败信息 %s", err.Error()))
+		return
+	}
+
+	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
 }

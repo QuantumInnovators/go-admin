@@ -1,12 +1,11 @@
 package apis
 
 import (
-    "fmt"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
-	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 
 	"go-admin/app/sequence/models"
 	"go-admin/app/sequence/service"
@@ -28,18 +27,18 @@ type Meta struct {
 // @Router /api/v1/meta [get]
 // @Security Bearer
 func (e Meta) GetPage(c *gin.Context) {
-    req := dto.MetaGetPageReq{}
-    s := service.Meta{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-   	if err != nil {
-   		e.Logger.Error(err)
-   		e.Error(500, err, err.Error())
-   		return
-   	}
+	req := dto.MetaGetPageReq{}
+	s := service.Meta{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 
 	p := actions.GetPermissionFromContext(c)
 	list := make([]models.Meta, 0)
@@ -48,7 +47,7 @@ func (e Meta) GetPage(c *gin.Context) {
 	err = s.GetPage(&req, p, &list, &count)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("获取Meta失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
 
 	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
@@ -65,7 +64,7 @@ func (e Meta) GetPage(c *gin.Context) {
 func (e Meta) Get(c *gin.Context) {
 	req := dto.MetaGetReq{}
 	s := service.Meta{}
-    err := e.MakeContext(c).
+	err := e.MakeContext(c).
 		MakeOrm().
 		Bind(&req).
 		MakeService(&s.Service).
@@ -81,10 +80,10 @@ func (e Meta) Get(c *gin.Context) {
 	err = s.Get(&req, p, &object)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("获取Meta失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
 
-	e.OK( object, "查询成功")
+	e.OK(object, "查询成功")
 }
 
 // Insert 创建Meta
@@ -98,25 +97,25 @@ func (e Meta) Get(c *gin.Context) {
 // @Router /api/v1/meta [post]
 // @Security Bearer
 func (e Meta) Insert(c *gin.Context) {
-    req := dto.MetaInsertReq{}
-    s := service.Meta{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-    if err != nil {
-        e.Logger.Error(err)
-        e.Error(500, err, err.Error())
-        return
-    }
+	req := dto.MetaInsertReq{}
+	s := service.Meta{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 	// 设置创建人
 	req.SetCreateBy(user.GetUserId(c))
 
 	err = s.Insert(&req)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("创建Meta失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
 
 	e.OK(req.GetId(), "创建成功")
@@ -134,27 +133,27 @@ func (e Meta) Insert(c *gin.Context) {
 // @Router /api/v1/meta/{id} [put]
 // @Security Bearer
 func (e Meta) Update(c *gin.Context) {
-    req := dto.MetaUpdateReq{}
-    s := service.Meta{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-    if err != nil {
-        e.Logger.Error(err)
-        e.Error(500, err, err.Error())
-        return
-    }
+	req := dto.MetaUpdateReq{}
+	s := service.Meta{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 	req.SetUpdateBy(user.GetUserId(c))
 	p := actions.GetPermissionFromContext(c)
 
 	err = s.Update(&req, p)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("修改Meta失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
-	e.OK( req.GetId(), "修改成功")
+	e.OK(req.GetId(), "修改成功")
 }
 
 // Delete 删除Meta
@@ -166,18 +165,18 @@ func (e Meta) Update(c *gin.Context) {
 // @Router /api/v1/meta [delete]
 // @Security Bearer
 func (e Meta) Delete(c *gin.Context) {
-    s := service.Meta{}
-    req := dto.MetaDeleteReq{}
-    err := e.MakeContext(c).
-        MakeOrm().
-        Bind(&req).
-        MakeService(&s.Service).
-        Errors
-    if err != nil {
-        e.Logger.Error(err)
-        e.Error(500, err, err.Error())
-        return
-    }
+	s := service.Meta{}
+	req := dto.MetaDeleteReq{}
+	err := e.MakeContext(c).
+		MakeOrm().
+		Bind(&req).
+		MakeService(&s.Service).
+		Errors
+	if err != nil {
+		e.Logger.Error(err)
+		e.Error(500, err, err.Error())
+		return
+	}
 
 	// req.SetUpdateBy(user.GetUserId(c))
 	p := actions.GetPermissionFromContext(c)
@@ -185,7 +184,7 @@ func (e Meta) Delete(c *gin.Context) {
 	err = s.Remove(&req, p)
 	if err != nil {
 		e.Error(500, err, fmt.Sprintf("删除Meta失败，\r\n失败信息 %s", err.Error()))
-        return
+		return
 	}
-	e.OK( req.GetId(), "删除成功")
+	e.OK(req.GetId(), "删除成功")
 }

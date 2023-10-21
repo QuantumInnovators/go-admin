@@ -89,3 +89,16 @@ type SequenceGetByClassReq struct {
 func (s *SequenceGetByClassReq) GetClassID() interface{} {
 	return s.ClassID
 }
+
+type SequenceSearchReq struct {
+	dto.Pagination `search:"-"`
+	Source         int    `json:"source"` // 数据库来源 0-total 1-ncbi 2-local
+	Key            string `json:"key"`    // 查询关键词
+}
+
+func (s *SequenceSearchReq) GetNeedSearch() interface{} {
+	// 查询key匹配
+	return map[string]interface{}{
+		"description like ?": "%" + s.Key + "%",
+	}
+}

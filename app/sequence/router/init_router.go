@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/go-admin-team/go-admin-core/logger"
 	"github.com/go-admin-team/go-admin-core/sdk"
+	"github.com/go-admin-team/go-admin-core/sdk/config"
 	common "go-admin/common/middleware"
 	"os"
 )
@@ -31,6 +32,11 @@ func InitRouter() {
 		log.Fatalf("JWT Init Error, %s", err.Error())
 	}
 
+	g := r.Group("")
+	// swagger；注意：生产环境可以注释掉
+	if config.ApplicationConfig.Mode != "prod" {
+		swaggerRouter(g)
+	}
 	// 注册系统路由
 	initRouter(r, authMiddleware)
 }
