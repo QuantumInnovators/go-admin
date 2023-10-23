@@ -9,7 +9,7 @@ type Family struct {
 	Name       string `json:"name" gorm:"type:varchar(255);comment:拉丁文名"`
 	Desc       string `json:"desc" gorm:"type:varchar(255);comment:Desc"`
 	OrderId    string `json:"orderId" gorm:"type:int;comment:所属目"`
-	CategoryId string `json:"categoryId" gorm:"type:json;comment:所属类"`
+	CategoryId int    `json:"categoryId" gorm:"type:int;comment:所属类"`
 	models.ModelTime
 	models.ControlBy
 }

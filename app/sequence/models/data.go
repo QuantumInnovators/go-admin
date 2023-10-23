@@ -20,6 +20,8 @@ type ClassListPhylum struct {
 
 type ClassListClass struct {
 	Data  Class             `json:"data"`
+	Id    int               `json:"id"`
+	Desc  string            `json:"label"`
 	Order []*ClassListOrder `json:"children"`
 }
 

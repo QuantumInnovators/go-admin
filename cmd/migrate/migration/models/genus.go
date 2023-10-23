@@ -9,7 +9,7 @@ type Genus struct {
 	Name       string `json:"name" gorm:"type:varchar(255);comment:拉丁文名"`
 	Desc       string `json:"desc" gorm:"type:varchar(255);comment:Desc"`
 	FamilyId   string `json:"familyId" gorm:"type:int;comment:所属科"`
-	CategoryId string `json:"categoryId" gorm:"type:json;comment:所属类"`
+	CategoryId int    `json:"categoryId" gorm:"type:int;comment:所属类"`
 	models.ModelTime
 	models.ControlBy
 }
