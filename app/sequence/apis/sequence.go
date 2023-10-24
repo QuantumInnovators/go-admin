@@ -247,7 +247,11 @@ func (e Sequence) Search(c *gin.Context) {
 	}
 
 	p := actions.GetPermissionFromContext(c)
-	list := make([]models.Sequence, 0)
+	type packData struct {
+		Source int               `json:"source"`
+		List   []models.Sequence `json:"list"`
+	}
+	list := make([]packData, 0)
 	var count int64
 
 	var data models.Sequence
@@ -258,14 +262,18 @@ func (e Sequence) Search(c *gin.Context) {
 	case 0:
 		searchTables = append(searchTables, data.TableName())
 		iData = append(iData, data)
+		list = append(list, packData{Source: 1, List: make([]models.Sequence, 0)})
 		searchTables = append(searchTables, dataLocal.TableName())
 		iData = append(iData, dataLocal)
+		list = append(list, packData{Source: 2, List: make([]models.Sequence, 0)})
 	case 1:
 		searchTables = append(searchTables, data.TableName())
 		iData = append(iData, data)
+		list = append(list, packData{Source: 1, List: make([]models.Sequence, 0)})
 	case 2:
 		searchTables = append(searchTables, dataLocal.TableName())
 		iData = append(iData, dataLocal)
+		list = append(list, packData{Source: 2, List: make([]models.Sequence, 0)})
 	}
 
 	for idx, tableName := range searchTables {
@@ -276,7 +284,7 @@ func (e Sequence) Search(c *gin.Context) {
 			return
 		}
 		if retList != nil {
-			list = append(list, retList...)
+			list[idx].List = retList
 		}
 	}
 	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
