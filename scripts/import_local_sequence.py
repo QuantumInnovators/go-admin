@@ -26,6 +26,7 @@ for file in files:
         genus_cn_name = row[3]  # 中文属名or种名
         # 引物名称
         primer_name = row[2]
+        typ_name = row[6]
 
         # 从种表获取name=genus_name或者genus_cn_name=desc的id
         # 如果没有，从属表获取name=genus_name或者genus_cn_name=desc的id
@@ -49,6 +50,9 @@ for file in files:
             sql = f"SELECT * FROM genus WHERE id='{parent_id}'"
             cursor.execute(sql)
             result = cursor.fetchone()
+            if result is None:
+                print("Error: 未找到对应的属")
+                continue
             parent_id = result[3]
 
         family_id = parent_id
@@ -74,6 +78,6 @@ for file in files:
         sequence_id = f"DQDW{phylum_id:02d}{order_id:02d}{family_id:03d}.{index}"
         sequence_desc = genus_name + " " + primer_name
         # 插入序列表
-        sql = f"INSERT INTO `sequence_local` (`sequence_id`, `sequence_description`, `sequence`) VALUES ('{sequence_id}', '{sequence_desc}', '{sequence}')"
+        sql = f"INSERT INTO `sequence_local` (`sequence_id`, `name`, `name_zh`, `type`, `primer_name`, `sequence_description`, `sequence`) VALUES ('{sequence_id}', '{genus_name}', '{genus_cn_name}', '{typ_name}', '{primer_name}', '{sequence_desc}', '{sequence}')"
         cursor.execute(sql)
         conn.commit()

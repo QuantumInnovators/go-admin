@@ -283,6 +283,18 @@ func (e Sequence) Search(c *gin.Context) {
 			e.Error(500, err, fmt.Sprintf("获取Sequence失败，\r\n失败信息 %s", err.Error()))
 			return
 		}
+
+		// 处理一下retList数据
+		for _, item := range retList {
+			if item.Name != "" {
+				continue
+			}
+			// 按照一定格式从desc字符串转换
+			// Caenidae sp. Cy2020 sp1 voucher Caenidae_Cy2020_sp1 small subunit ribosomal RNA gene and internal transcribed spacer 1, partial sequence
+			// 获取 Caenidae sp. 为 name
+			// 获取 partial 为 type
+			// todo zyx
+		}
 		if retList != nil {
 			list[idx].List = retList
 		}
