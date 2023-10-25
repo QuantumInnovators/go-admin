@@ -71,7 +71,7 @@ for file in files:
         # 规则：例如底栖动物，门（2位数字），目（2位数字），科（3位数字）.第几条
         # DQDW0101001.1
         # DQDW0101002.1
-        sequence_id = f"DXDW{phylum_id:02d}{order_id:02d}{family_id:03d}.{index}"
+        sequence_id = f"DQDW{phylum_id:02d}{order_id:02d}{family_id:03d}.{index}"
         sequence_desc = genus_name + " " + primer_name
         # 插入序列表
         sql = f"INSERT INTO `sequence_local` (`sequence_id`, `sequence_description`, `sequence`) VALUES ('{sequence_id}', '{sequence_desc}', '{sequence}')"
