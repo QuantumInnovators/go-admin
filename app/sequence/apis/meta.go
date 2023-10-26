@@ -52,34 +52,38 @@ func (e Meta) GetPage(c *gin.Context) {
 	}
 
 	for idx, item := range list {
+		// 从 category 表里查询 category 的名称
+		var category models.Category
+		e.Orm.Model(&category).Where("id = ?", item.CategoryId).First(&category)
+		list[idx].CategoryName = category.Name
 		// 从 kingdom 表里查询 kingdom 的名称
 		var kingdom models.Kingdom
 		e.Orm.Model(&kingdom).Where("id = ?", item.KingdomId).First(&kingdom)
-		list[idx].KingdomName = kingdom.Name
+		list[idx].KingdomName = kingdom.Desc
 		// 从 phylum 表里查询 phylum 的名称
 		var phylum models.Phylum
 		e.Orm.Model(&phylum).Where("id = ?", item.PhylumId).First(&phylum)
-		list[idx].PhylumName = phylum.Name
+		list[idx].PhylumName = phylum.NameCn
 		// 从 class 表里查询 class 的名称
 		var class models.Class
 		e.Orm.Model(&class).Where("id = ?", item.ClassId).First(&class)
-		list[idx].ClassName = class.Name
+		list[idx].ClassName = class.NameCn
 		// 从 order 表里查询 order 的名称
 		var order models.Order
 		e.Orm.Model(&order).Where("id = ?", item.OrderId).First(&order)
-		list[idx].OrderName = order.Name
+		list[idx].OrderName = order.NameCn
 		// 从 family 表里查询 family 的名称
 		var family models.Family
 		e.Orm.Model(&family).Where("id = ?", item.FamilyId).First(&family)
-		list[idx].FamilyName = family.Name
+		list[idx].FamilyName = family.NameCn
 		// 从 genus 表里查询 genus 的名称
 		var genus models.Genus
 		e.Orm.Model(&genus).Where("id = ?", item.GenusId).First(&genus)
-		list[idx].GenusName = genus.Name
+		list[idx].GenusName = genus.NameCn
 		// 从 species 表里查询 species 的名称
 		var species models.Species
 		e.Orm.Model(&species).Where("id = ?", item.SpeciesId).First(&species)
-		list[idx].SpeciesName = species.Name
+		list[idx].SpeciesName = species.NameCn
 	}
 
 	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
