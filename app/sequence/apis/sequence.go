@@ -299,6 +299,8 @@ func (e Sequence) Search(c *gin.Context) {
 			if index != -1 {
 				retList[idx].Type = item.SequenceDescription[index:]
 				desc = item.SequenceDescription[:index]
+			} else {
+				desc = item.SequenceDescription
 			}
 			// 查询所有种的名字，如果在desc中存在，则提取出来
 			var speciesList []models.Species
@@ -306,7 +308,7 @@ func (e Sequence) Search(c *gin.Context) {
 			for _, species := range speciesList {
 				if strings.Contains(desc, species.Name) {
 					retList[idx].Name = species.Name
-					retList[idx].NameZh = species.Desc
+					retList[idx].NameZh = species.NameCn
 					break
 				}
 			}
@@ -319,7 +321,7 @@ func (e Sequence) Search(c *gin.Context) {
 			for _, genus := range genusList {
 				if strings.Contains(desc, genus.Name) {
 					retList[idx].Name = genus.Name
-					retList[idx].NameZh = genus.Desc
+					retList[idx].NameZh = genus.NameCn
 					break
 				}
 			}
@@ -332,9 +334,12 @@ func (e Sequence) Search(c *gin.Context) {
 			for _, family := range familyList {
 				if strings.Contains(desc, family.Name) {
 					retList[idx].Name = family.Name
-					retList[idx].NameZh = family.Desc
+					retList[idx].NameZh = family.NameCn
 					break
 				}
+			}
+			if retList[idx].Name == "" {
+				retList[idx].Name = desc
 			}
 		}
 		if retList != nil {

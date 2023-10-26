@@ -1,7 +1,13 @@
 package models
 
 type ClassList struct {
-	Data []*ClassListKingdom `json:"data"`
+	Data []*ClassData `json:"data"`
+}
+
+type ClassData struct {
+	Id       int          `json:"id"`
+	Label    string       `json:"label"`
+	Children []*ClassData `json:"children"`
 }
 
 type ClassListKingdom struct {

@@ -44,7 +44,7 @@ for file in files:
             continue
         ret = result[0]
         id = ret[0]
-        parent_id = ret[3]
+        parent_id = ret[4]
         if is_species:
             # 从属表获取parent_id
             sql = f"SELECT * FROM genus WHERE id='{parent_id}'"
@@ -53,24 +53,33 @@ for file in files:
             if result is None:
                 print("Error: 未找到对应的属")
                 continue
-            parent_id = result[3]
+            parent_id = result[4]
 
         family_id = parent_id
         # 从科表获取parent_id
         sql = f"SELECT * FROM family WHERE id='{family_id}'"
         cursor.execute(sql)
         result = cursor.fetchone()
-        order_id = result[3]
+        if result == None:
+            print("Error: 未找到对应的科")
+            continue
+        order_id = result[4]
         # 从目表获取parent_id
         sql = f"SELECT * FROM `order` WHERE id='{order_id}'"
         cursor.execute(sql)
         result = cursor.fetchone()
-        class_id = result[3]
+        if result == None:
+            print("Error: 未找到对应的目")
+            continue
+        class_id = result[4]
         # 从纲表获取parent_id
         sql = f"SELECT * FROM class WHERE id='{class_id}'"
         cursor.execute(sql)
         result = cursor.fetchone()
-        phylum_id = result[3]
+        if result == None:
+            print("Error: 未找到对应的纲")
+            continue
+        phylum_id = result[4]
 
         # 规则：例如底栖动物，门（2位数字），目（2位数字），科（3位数字）.第几条
         # DQDW0101001.1
