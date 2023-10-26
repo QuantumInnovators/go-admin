@@ -6,6 +6,7 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
+	"strings"
 
 	"go-admin/app/sequence/models"
 	"go-admin/app/sequence/service"
@@ -285,15 +286,56 @@ func (e Sequence) Search(c *gin.Context) {
 		}
 
 		// 处理一下retList数据
-		for _, item := range retList {
+		for idx, item := range retList {
 			if item.Name != "" {
 				continue
 			}
 			// 按照一定格式从desc字符串转换
 			// Caenidae sp. Cy2020 sp1 voucher Caenidae_Cy2020_sp1 small subunit ribosomal RNA gene and internal transcribed spacer 1, partial sequence
 			// 获取 Caenidae sp. 为 name
-			// 获取 partial 为 type
-			// todo zyx
+			// 获取 partial 及以后为 type
+			var desc string
+			index := strings.Index(item.SequenceDescription, "partial")
+			if index != -1 {
+				retList[idx].Type = item.SequenceDescription[index:]
+				desc = item.SequenceDescription[:index]
+			}
+			// 查询所有种的名字，如果在desc中存在，则提取出来
+			var speciesList []models.Species
+			e.Orm.Model(&models.Species{}).Find(&speciesList)
+			for _, species := range speciesList {
+				if strings.Contains(desc, species.Name) {
+					retList[idx].Name = species.Name
+					retList[idx].NameZh = species.Desc
+					break
+				}
+			}
+			if retList[idx].Name != "" {
+				continue
+			}
+			// 查询所有的属名字，如果在desc中存在，则提取出来
+			var genusList []models.Genus
+			e.Orm.Model(&models.Genus{}).Find(&genusList)
+			for _, genus := range genusList {
+				if strings.Contains(desc, genus.Name) {
+					retList[idx].Name = genus.Name
+					retList[idx].NameZh = genus.Desc
+					break
+				}
+			}
+			if retList[idx].Name != "" {
+				continue
+			}
+			// 查询所有的科名字，如果在desc中存在，则提取出来
+			var familyList []models.Family
+			e.Orm.Model(&models.Family{}).Find(&familyList)
+			for _, family := range familyList {
+				if strings.Contains(desc, family.Name) {
+					retList[idx].Name = family.Name
+					retList[idx].NameZh = family.Desc
+					break
+				}
+			}
 		}
 		if retList != nil {
 			list[idx].List = retList
