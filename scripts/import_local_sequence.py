@@ -30,13 +30,13 @@ for file in files:
 
         # 从种表获取name=genus_name或者genus_cn_name=desc的id
         # 如果没有，从属表获取name=genus_name或者genus_cn_name=desc的id
-        sql = f"SELECT * FROM species WHERE `name`='{genus_name}' OR `desc`='{genus_cn_name}'"
+        sql = f"SELECT * FROM species WHERE `name`='{genus_name}' OR `name_cn`='{genus_cn_name}'"
         cursor.execute(sql)
         result = cursor.fetchall()
         is_species = True
         if len(result) == 0:
             is_species = False
-            sql = f"SELECT * FROM genus WHERE `name`='{genus_name}' OR `desc`='{genus_cn_name}'"
+            sql = f"SELECT * FROM genus WHERE `name`='{genus_name}' OR `name_cn`='{genus_cn_name}'"
             cursor.execute(sql)
             result = cursor.fetchall()
         if len(result) == 0:

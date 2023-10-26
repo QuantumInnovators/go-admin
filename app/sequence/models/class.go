@@ -8,9 +8,10 @@ type Class struct {
 	models.Model
 
 	Name       string `json:"name" gorm:"type:varchar(255);comment:拉丁文名"`
+	NameCn     string `json:"nameCn" gorm:"type:varchar(255);comment:中文名"`
 	Desc       string `json:"desc" gorm:"type:varchar(255);comment:Desc"`
-	PhylumId   int    `json:"phylumId" gorm:"type:int;comment:所属门"`
-	CategoryId string `json:"categoryId" gorm:"type:json;comment:所属类"`
+	ParentId   int64  `json:"parentId" gorm:"type:bigint;comment:所属门"`
+	CategoryId string `json:"categoryId" gorm:"type:varchar(255);comment:所属类"`
 	models.ModelTime
 	models.ControlBy
 }

@@ -50,7 +50,7 @@ func (e *ClassList) GetTotalClassList(p *actions.DataPermission, list *models.Cl
 	}
 	for _, v := range listPhylum {
 		for _, v1 := range list.Data {
-			if v1.Data.Id == v.KingdomId {
+			if int64(v1.Data.Id) == v.ParentId {
 				v1.Phylum = append(v1.Phylum, &models.ClassListPhylum{
 					Id:   v.Id,
 					Desc: v.Desc,
@@ -62,7 +62,7 @@ func (e *ClassList) GetTotalClassList(p *actions.DataPermission, list *models.Cl
 	for _, v := range listClass {
 		for _, v1 := range list.Data {
 			for _, v2 := range v1.Phylum {
-				if v2.Data.Id == v.PhylumId {
+				if int64(v2.Data.Id) == v.ParentId {
 					v2.Class = append(v2.Class, &models.ClassListClass{
 						Id:   v.Id,
 						Desc: v.Desc,

@@ -14,12 +14,13 @@ type PhylumGetPageReq struct {
 type PhylumOrder struct {
 	Id         string `form:"idOrder"  search:"type:order;column:id;table:phylum"`
 	Name       string `form:"nameOrder"  search:"type:order;column:name;table:phylum"`
+	NameCn     string `form:"nameCnOrder"  search:"type:order;column:name_cn;table:phylum"`
 	Desc       string `form:"descOrder"  search:"type:order;column:desc;table:phylum"`
-	KingdomId  string `form:"kingdomIdOrder"  search:"type:order;column:kingdom_id;table:phylum"`
+	ParentId   string `form:"parentIdOrder"  search:"type:order;column:parent_id;table:phylum"`
 	CategoryId string `form:"categoryIdOrder"  search:"type:order;column:category_id;table:phylum"`
-	DeletedAt  string `form:"deletedAtOrder"  search:"type:order;column:deleted_at;table:phylum"`
 	CreatedAt  string `form:"createdAtOrder"  search:"type:order;column:created_at;table:phylum"`
 	UpdatedAt  string `form:"updatedAtOrder"  search:"type:order;column:updated_at;table:phylum"`
+	DeletedAt  string `form:"deletedAtOrder"  search:"type:order;column:deleted_at;table:phylum"`
 	CreateBy   string `form:"createByOrder"  search:"type:order;column:create_by;table:phylum"`
 	UpdateBy   string `form:"updateByOrder"  search:"type:order;column:update_by;table:phylum"`
 }
@@ -29,11 +30,12 @@ func (m *PhylumGetPageReq) GetNeedSearch() interface{} {
 }
 
 type PhylumInsertReq struct {
-	Id         int    `json:"-" comment:""` //
+	Id         int    `json:"-" comment:"主键编码"` // 主键编码
 	Name       string `json:"name" comment:"拉丁文名"`
-	Desc       string `json:"desc" comment:""`
-	KingdomId  int    `json:"kingdomId" comment:"所属界"`
-	CategoryId string `json:"categoryId" comment:"所属种群"`
+	NameCn     string `json:"nameCn" comment:"中文名"`
+	Desc       string `json:"desc" comment:"Desc"`
+	ParentId   int64  `json:"parentId" comment:"所属界"`
+	CategoryId string `json:"categoryId" comment:"所属类"`
 	common.ControlBy
 }
 
@@ -42,8 +44,9 @@ func (s *PhylumInsertReq) Generate(model *models.Phylum) {
 		model.Model = common.Model{Id: s.Id}
 	}
 	model.Name = s.Name
+	model.NameCn = s.NameCn
 	model.Desc = s.Desc
-	model.KingdomId = s.KingdomId
+	model.ParentId = s.ParentId
 	model.CategoryId = s.CategoryId
 	model.CreateBy = s.CreateBy // 添加这而，需要记录是被谁创建的
 }
@@ -53,11 +56,12 @@ func (s *PhylumInsertReq) GetId() interface{} {
 }
 
 type PhylumUpdateReq struct {
-	Id         int    `uri:"id" comment:""` //
+	Id         int    `uri:"id" comment:"主键编码"` // 主键编码
 	Name       string `json:"name" comment:"拉丁文名"`
-	Desc       string `json:"desc" comment:""`
-	KingdomId  int    `json:"kingdomId" comment:"所属界"`
-	CategoryId string `json:"categoryId" comment:"所属种群"`
+	NameCn     string `json:"nameCn" comment:"中文名"`
+	Desc       string `json:"desc" comment:"Desc"`
+	ParentId   int64  `json:"parentId" comment:"所属界"`
+	CategoryId string `json:"categoryId" comment:"所属类"`
 	common.ControlBy
 }
 
@@ -66,8 +70,9 @@ func (s *PhylumUpdateReq) Generate(model *models.Phylum) {
 		model.Model = common.Model{Id: s.Id}
 	}
 	model.Name = s.Name
+	model.NameCn = s.NameCn
 	model.Desc = s.Desc
-	model.KingdomId = s.KingdomId
+	model.ParentId = s.ParentId
 	model.CategoryId = s.CategoryId
 	model.UpdateBy = s.UpdateBy // 添加这而，需要记录是被谁更新的
 }

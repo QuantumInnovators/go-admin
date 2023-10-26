@@ -64,7 +64,7 @@ for file in files:
                 print("Not Found Parent Error: " + key)
             else:
                 fam_id = result[0]
-            sql = f"INSERT INTO `phylum` (`name`, `desc`, `kingdom_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
+            sql = f"INSERT INTO `phylum` (`name`, `name_cn`, `parent_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
             cursor.execute(sql)
             conn.commit()
             last_id = cursor.lastrowid
@@ -89,7 +89,7 @@ for file in files:
                 print("Not Found Parent Error: " + key)
             else:
                 fam_id = result[0]
-            sql = f"INSERT INTO `class` (`name`, `desc`, `phylum_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
+            sql = f"INSERT INTO `class` (`name`, `name_cn`, `parent_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
             cursor.execute(sql)
             conn.commit()
             last_id = cursor.lastrowid
@@ -114,7 +114,7 @@ for file in files:
                 print("Not Found Parent Error: " + key)
             else:
                 fam_id = result[0]
-            sql = f"INSERT INTO `order` (`name`, `desc`, `class_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
+            sql = f"INSERT INTO `order` (`name`, `name_cn`, `parent_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
             cursor.execute(sql)
             conn.commit()
             last_id = cursor.lastrowid
@@ -139,7 +139,7 @@ for file in files:
                 print("Not Found Parent Error: ", key)
             else:
                 fam_id = result[0]
-            sql = f"INSERT INTO `family` (`name`, `desc`, `order_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
+            sql = f"INSERT INTO `family` (`name`, `name_cn`, `parent_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
             cursor.execute(sql)
             conn.commit()
             last_id = cursor.lastrowid
@@ -164,7 +164,7 @@ for file in files:
                 print("Not Found Parent Error: ", key)
             else:
                 fam_id = result[0]
-            sql = f"INSERT INTO `genus` (`name`, `desc`, `family_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
+            sql = f"INSERT INTO `genus` (`name`, `name_cn`, `parent_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
             cursor.execute(sql)
             conn.commit()
             last_id = cursor.lastrowid
@@ -190,7 +190,7 @@ for file in files:
             else:
                 fam_id = result[0]
 
-            sql = f"INSERT INTO `species` (`name`, `desc`, `genus_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
+            sql = f"INSERT INTO `species` (`name`, `name_cn`, `parent_id`, `category_id`) VALUES ('{column1}', '{column2}', '{fam_id}', '{category_index}')"
             cursor.execute(sql)
             conn.commit()
             inserted.add(row[14])
