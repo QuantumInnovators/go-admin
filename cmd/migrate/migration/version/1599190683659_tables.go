@@ -53,6 +53,7 @@ func _1599190683659Tables(db *gorm.DB, version string) error {
 			new(models.Location),
 			new(models.Kingdom),
 			new(models.Order),
+			new(models.Projects),
 		)
 		if err != nil {
 			return err

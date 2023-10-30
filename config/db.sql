@@ -281,7 +281,13 @@ INSERT INTO sys_menu VALUES (624, '/dashboard/database/update', '数据库上传
 INSERT INTO sys_menu VALUES (625, '/dashboard/database/search', '数据库搜索', 'base-info', '/dashboard/database/search', '/0/613/615/625', 'C', '', '', 615, 0, '', '/dashboard/database/search', 2, '0', '1', 1, 0, '2023-10-21 15:23:52.243', '2023-10-23 21:23:38.724', NULL);
 INSERT INTO sys_menu VALUES (626, '/database/search_ncbi', '数据库浏览', 'db', '/database/search_ncbi', '/0/613/615/626', 'C', '', '', 615, 0, '', '/dashboard/database/search_ncbi', 1, '0', '1', 1, 1, '2023-10-21 15:24:29.374', '2023-10-23 21:23:38.724', NULL);
 INSERT INTO sys_menu VALUES (627, 'database/index', '数据库', 'db', 'database/index', '/0/613/615/627', 'C', '', '', 615, 0, '', '/dashboard/database/index', 0, '0', '1', 1, 1, '2023-10-21 15:36:57.241', '2023-10-23 21:23:38.725', NULL);
-
+INSERT INTO `sys_menu` VALUES
+	(628, '', 'Projects', 'pass', '/projects', '/0/628', 'M', '无', '', 0, 0, '', 'Layout', 0, '0', '0', 1, 0, '2023-10-30 19:46:12.246', '2023-10-30 19:46:12.250', NULL),
+	(629, 'ProjectsManage', 'Projects', 'pass', '/sequence/projects', '/0/628/629', 'C', '无', 'sequence:projects:list', 628, 0, '', '/sequence/projects/index', 0, '0', '0', 1, 1, '2023-10-30 19:46:12.283', '2023-10-30 19:46:12.307', NULL),
+	(630, '', '分页获取Projects', '', 'projects', '/0/628/629/630', 'F', '无', 'sequence:projects:query', 629, 0, '', '', 0, '0', '0', 1, 1, '2023-10-30 19:46:12.334', '2023-10-30 19:46:12.338', NULL),
+	(631, '', '创建Projects', '', 'projects', '/0/628/629/631', 'F', '无', 'sequence:projects:add', 629, 0, '', '', 0, '0', '0', 1, 1, '2023-10-30 19:46:12.344', '2023-10-30 19:46:12.348', NULL),
+	(632, '', '修改Projects', '', 'projects', '/0/628/629/632', 'F', '无', 'sequence:projects:edit', 629, 0, '', '', 0, '0', '0', 1, 1, '2023-10-30 19:46:12.383', '2023-10-30 19:46:12.389', NULL),
+	(633, '', '删除Projects', '', 'projects', '/0/628/629/633', 'F', '无', 'sequence:projects:remove', 629, 0, '', '', 0, '0', '0', 1, 1, '2023-10-30 19:46:12.397', '2023-10-30 19:46:12.429', NULL);
 
 INSERT INTO sys_menu_api_rule VALUES (216, 6);
 INSERT INTO sys_menu_api_rule VALUES (250, 6);
