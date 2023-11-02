@@ -251,6 +251,7 @@ func (e Sequence) Search(c *gin.Context) {
 	type packData struct {
 		Source int               `json:"source"`
 		List   []models.Sequence `json:"list"`
+		Count  int64             `json:"count"`
 	}
 	list := make([]packData, 0)
 	var count int64
@@ -279,7 +280,8 @@ func (e Sequence) Search(c *gin.Context) {
 
 	for idx, tableName := range searchTables {
 		retList := make([]models.Sequence, 0)
-		err = s.GetFromSourceByKey(&req, p, &retList, &count, iData[idx], tableName)
+		var retCount int64
+		err = s.GetFromSourceByKey(&req, p, &retList, &retCount, iData[idx], tableName)
 		if err != nil {
 			e.Error(500, err, fmt.Sprintf("获取Sequence失败，\r\n失败信息 %s", err.Error()))
 			return
@@ -344,6 +346,7 @@ func (e Sequence) Search(c *gin.Context) {
 		}
 		if retList != nil {
 			list[idx].List = retList
+			list[idx].Count = retCount
 		}
 	}
 	e.PageOK(list, int(count), req.GetPageIndex(), req.GetPageSize(), "查询成功")
